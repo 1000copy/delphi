@@ -1,0 +1,12 @@
+<data PropFormat="attr">
+  <TMyXML propString="行不行？" propAnsiString="行不行？" propShortString="行不行？" propUTF8String="行不行？" propWideString="行不行？" propWideChar="行" propChar="?" propBoolean="1" propInteger="128934" propByte="0" propWord="0" propSmallInt="0" propEnum="svTwo" propSet="[svTwo,svFour,svFive]" propFloat="3.14285714285714" propDate="2015-09-22" propTime="11:32:42.357" propDateTime="2015-09-22T11:32:42.357">
+    <propClass propFloat="2.90909090909091" />
+    <propClass_ReadOnly propFloat="3.14285714285714" />
+    <propList curDate="2015-09-22T11:32:42.357">
+      <o propFloat="3.28571428571429" />
+      <o propFloat="1.5" />
+      <o propFloat="0.333333333333333" />
+    </propList>
+    <propStringList Count="3" l0="line1" l2="line 3" />
+  </TMyXML>
+</data>
