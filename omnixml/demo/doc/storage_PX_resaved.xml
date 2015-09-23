@@ -1,44 +1,12 @@
-<data PropFormat="node">
-  <TMyXML>
-    <propString>行不行？</propString>
-    <propAnsiString>行不行？</propAnsiString>
-    <propShortString>行不行？</propShortString>
-    <propUTF8String>行不行？</propUTF8String>
-    <propWideString>行不行？</propWideString>
-    <propWideChar>���</propWideChar>
-    <propChar>���</propChar>
-    <propBoolean>1</propBoolean>
-    <propInteger>128934</propInteger>
-    <propByte>0</propByte>
-    <propWord>0</propWord>
-    <propSmallInt>0</propSmallInt>
-    <propEnum>svTwo</propEnum>
-    <propSet>[svTwo,svFour,svFive]</propSet>
-    <propClass>
-      <propFloat>2.90909090909091</propFloat>
-    </propClass>
-    <propClass_ReadOnly>
-      <propFloat>3.14285714285714</propFloat>
-    </propClass_ReadOnly>
-    <propFloat>3.14285714285714</propFloat>
-    <propList>
-      <curDate>2015-09-22T11:24:00.093</curDate>
-      <o>
-        <propFloat>3.28571428571429</propFloat>
-      </o>
-      <o>
-        <propFloat>1.5</propFloat>
-      </o>
-      <o>
-        <propFloat>0.333333333333333</propFloat>
-      </o>
+<data PropFormat="attr">
+  <TMyXML propString="行不行？" propAnsiString="行不行你到底？" propShortString="行不行？" propUTF8String="行不行？" propWideString="行不行？" propWideChar="行" propChar="?" propBoolean="1" propInteger="128934" propByte="0" propWord="0" propSmallInt="0" propEnum="svTwo" propSet="[svTwo,svFour,svFive]" propFloat="3.14285714285714" propDate="2015-09-22" propTime="11:42:48.569" propDateTime="2015-09-22T11:42:48.569">
+    <propClass propFloat="2.90909090909091" />
+    <propClass_ReadOnly propFloat="3.14285714285714" />
+    <propList curDate="2015-09-22T11:42:48.569">
+      <o propFloat="3.28571428571429" />
+      <o propFloat="1.5" />
+      <o propFloat="0.333333333333333" />
     </propList>
-    <propDate>2015-09-22</propDate>
-    <propTime>11:24:00.093</propTime>
-    <propDateTime>2015-09-22T11:24:00.093</propDateTime>
-    <propStringList Count="3">
-      <l0>line1</l0>
-      <l2>line 3</l2>
-    </propStringList>
+    <propStringList Count="3" l0="line1" l2="line 3" />
   </TMyXML>
 </data>

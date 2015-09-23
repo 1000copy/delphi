@@ -1,0 +1,9 @@
+<data PropFormat="attr">
+  <MyPage Name="page 1">
+    <LineList>
+      <o Name="line1" />
+      <o Name="line2" />
+      <o Name="line3" />
+    </LineList>
+  </MyPage>
+</data>
