@@ -19,6 +19,7 @@ type
   published
     property id : string read FName write FName;
   end;
+//   NLine 的构造函数非常关键，必须覆盖 Create(Collection: TCollection);override，如果是Create;就无法被omnixml在构建此对象的时候调用 。
   NLine = class(TCollectionItem)
   private
     FName: string;
