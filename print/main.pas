@@ -26,19 +26,6 @@ type
   end;
   //2222222222222222
 
-  TChildClass2 = class(TCollectionItem)
-  private
-    FpropFloat: Double;
-  published
-    property propFloat: Double read FpropFloat write FpropFloat;
-  end;
-
-  TPropList2 = class(TCollection)
-  private
-    FCurDate: TDateTime;
-  published
-    property curDate: TDateTime read FCurDate write FCurDate;
-  end;
   
 
 
@@ -62,12 +49,12 @@ begin
     NCell(l.CellList.add).id:='c1';
     NLine(p.LineList.Add).id := '2';
     NLine(p.LineList.Add).id := '3';
-    TOmniXMLWriter.SaveToFile(p,  'storage_page.xml',pfAttributes,    ofIndent);
+    TOmniXMLWriter.SaveToFile(p,  '1.xml',pfAttributes,    ofIndent);
     p.free;
     // load
     p:=  NPage.Create;
 
-    TOmniXMLReader.LoadFromFile(p, 'storage_page.xml');
+    TOmniXMLReader.LoadFromFile(p, '1.xml');
     assert (p.id = 'str');
     l :=     NLine(p.LineList.Items[0]);
     assert (l.id = '1');
