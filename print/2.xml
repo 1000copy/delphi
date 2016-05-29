@@ -1,5 +1,5 @@
 <data PropFormat="attr">
-  <PPage id="str" ReportScale="0" PageWidth="0" PageHeight="0" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" NewTable="0" DataLine="0" TablePerPage="0">
+  <PPage id="str" ReportScale="1" PageWidth="1024" PageHeight="768" LeftMargin="5" TopMargin="5" RightMargin="5" BottomMargin="5" NewTable="1" DataLine="2" TablePerPage="1">
     <LineList>
       <o id="1">
         <CellList>

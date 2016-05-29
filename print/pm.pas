@@ -2,7 +2,7 @@ unit pm;
 
 interface
 uses classes;
-type
+type             
   NCell = class(TCollectionItem)
   private
     FName: string;
