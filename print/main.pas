@@ -39,6 +39,7 @@ uses pm;
 procedure TfMain.btn3Click(Sender: TObject);
 var
     p :NPage;l:NLine;
+    c : NCell;
 begin
     //save
     p:=  NPage.Create;
@@ -46,7 +47,9 @@ begin
     p.LineList := NLineList.Create(NLine);
     l :=NLine(p.LineList.Add);
     l.id := '1';
-    NCell(l.CellList.add).id:='c1';
+    c :=  NCell(l.CellList.add);
+    c.id:='c1';
+    c.i := 1 ;
     NLine(p.LineList.Add).id := '2';
     NLine(p.LineList.Add).id := '3';
     TOmniXMLWriter.SaveToFile(p,  '1.xml',pfAttributes,    ofIndent);
@@ -59,6 +62,7 @@ begin
     l :=     NLine(p.LineList.Items[0]);
     assert (l.id = '1');
     assert(NCell(l.CellList.items[0]).id = 'c1');
+    assert(NCell(l.CellList.items[0]).i = 1);
     assert (NLine(p.LineList.Items[1]).id = '2');
     assert (NLine(p.LineList.Items[2]).id = '3');
     p.free;

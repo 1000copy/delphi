@@ -6,9 +6,11 @@ type
   NCell = class(TCollectionItem)
   private
     FName: string;
+    FI:Integer;
   public
   published
     property id : string read FName write FName;
+    property i : integer read FI write FI;
   end;
   NCellList = class(TCollection)
   private

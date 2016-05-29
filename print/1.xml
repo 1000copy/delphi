@@ -3,7 +3,7 @@
     <LineList>
       <o id="1">
         <CellList>
-          <o id="c1" />
+          <o id="c1" i="1" />
         </CellList>
       </o>
       <o id="2" />
