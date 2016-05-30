@@ -1,16 +1,21 @@
 <data PropFormat="attr">
   <PPage ReportScale="1" PageWidth="1024" PageHeight="768" LeftMargin="5" TopMargin="5" RightMargin="5" BottomMargin="5" NewTable="1" DataLine="2" TablePerPage="1">
     <LineList>
-      <o _Index="1" MinHeight="70" DragHeight="70" LineTop="5">
+      <o _Index="1" MinHeight="70" DragHeight="70">
         <CellList>
-          <o id="c1" i="1" />
+          <o id="c1" i="1" LeftMargin="0" CellIndex="0" CellLeft="0" CellWidth="0" CellHeight="0" RequiredCellHeight="0" LeftLine="0" LeftLineWidth="0" TopLine="0" TopLineWidth="0" RightLine="0" RightLineWidth="0" BottomLine="0" BottomLineWidth="0" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="0" CellDispformat="0" bmpyn="0">
+            <OwnerCellPosition LineIndex="0" CellIndex="0" />
+            <SlaveCells>
+              <o LineIndex="1" CellIndex="1" />
+            </SlaveCells>
+          </o>
         </CellList>
         <LineRect Left="1" Right="0" Top="0" Bottom="0" />
       </o>
-      <o _Index="2" MinHeight="0" DragHeight="0" LineTop="0">
+      <o _Index="2" MinHeight="0" DragHeight="0">
         <LineRect Left="0" Right="0" Top="0" Bottom="0" />
       </o>
-      <o _Index="3" MinHeight="0" DragHeight="0" LineTop="0">
+      <o _Index="3" MinHeight="0" DragHeight="0">
         <LineRect Left="0" Right="0" Top="0" Bottom="0" />
       </o>
     </LineList>

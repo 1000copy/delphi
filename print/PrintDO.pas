@@ -5,44 +5,110 @@ interface
 
 uses classes;
 type
-{ ReadInteger(FLeftMargin);
-    ReadInteger(FCellIndex);
+  PCellList = class(TCollection)
+  private
+    FName: string;
+  public
+  published
+    property id : string read FName write FName;
+  end;
+  PCellPosition = class(TCollectionItem)
+  private
+    FCellIndex: integer;
+    FLineIndex: integer;
+  published
+    property LineIndex:integer read FLineIndex write FLineIndex;
+    property CellIndex:integer read FCellIndex write FCellIndex;
+  end;
+  PCellPosition1 = class(TPersistent)
+  private
+    FCellIndex: integer;
+    FLineIndex: integer;
+  published
+    property LineIndex:integer read FLineIndex write FLineIndex;
+    property CellIndex:integer read FCellIndex write FCellIndex;
+  end;
+  PCellPositionList = class(TCollection)
+  end;
+  PLineRect = class (TPersistent)
+  private
+    FTop: integer;
+    FLeft: integer;
+    FRight: integer;
+    FBottom: integer;
+  published
+    property Left:integer read FLeft write FLeft;
+    property Right:integer read FRight write FRight;
+    property Top:integer read FTop write FTop;
+    property Bottom:integer read FBottom write FBottom;
+  end;
+  PCell = class(TCollectionItem)
+  private
+    FName: string;
+    FI:Integer;
+    FBottomLine: boolean;
+    FLeftLine: boolean;
+    FTopLine: boolean;
+    FRightLine: boolean;
+    Fbmpyn: boolean;
+    FCellDispformat: Cardinal;
+    FDiagonal: Cardinal;
+    FTextColor: Cardinal;
+    FRightLineWidth: integer;
+    FVertAlign: integer;
+    FTopLineWidth: integer;
+    FLeftLineWidth: integer;
+    FCellLeft: integer;
+    FCellHeight: integer;
+    FBottomLineWidth: integer;
+    FHorzAlign: integer;
+    FCellIndex: integer;
+    FLeftMargin: integer;
+    FCellWidth: integer;
+    FRequiredCellHeight: integer;
+    FCellRect: PLineRect;
+    FTextRect: PLineRect;
+    FCellText: String;
+    FBackGroundColor: Cardinal;
+    FOwnerCellPosition: PCellPosition1;
+    FSlaveCells: PCellPositionList;
+  public
+    constructor Create(Collection: TCollection);override;
+    destructor destroy;override;
+  published
+    property id : string read FName write FName;
+    property i : integer read FI write FI;
+    property LeftMargin : integer read FLeftMargin write FLeftMargin;
+    property CellIndex : integer read FCellIndex write FCellIndex;
+    property CellLeft : integer read FCellLeft write FCellLeft;
+    property CellWidth : integer read FCellWidth write FCellWidth;
+    property CellRect : PLineRect read FCellRect write FCellRect;
+    property TextRect : PLineRect read FTextRect write FTextRect;
+    property CellHeight : integer read FCellHeight write FCellHeight;
+    property RequiredCellHeight : integer read FRequiredCellHeight write FRequiredCellHeight;
+    property LeftLine : boolean read FLeftLine write FLeftLine;
+    property LeftLineWidth : integer read FLeftLineWidth write FLeftLineWidth;
+    property TopLine : boolean read FTopLine write FTopLine;
+    property TopLineWidth : integer read FTopLineWidth write FTopLineWidth;
+    property RightLine : boolean read FRightLine write FRightLine;
+    property RightLineWidth : integer read FRightLineWidth write FRightLineWidth;
+    property BottomLine : boolean read FBottomLine write FBottomLine;
+    property BottomLineWidth : integer read FBottomLineWidth write FBottomLineWidth;
+    property Diagonal : Cardinal read FDiagonal write FDiagonal;
+    property TextColor : Cardinal read FTextColor write FTextColor;
+    property HorzAlign : integer read FHorzAlign write FHorzAlign;
+    property VertAlign : integer read FVertAlign write FVertAlign;
+    property CellText : String read FCellText write FCellText;
+    property CellDispformat : Cardinal read FCellDispformat write FCellDispformat;
+    property bmpyn : boolean read Fbmpyn write Fbmpyn;
+    property OwnerCellPosition : PCellPosition1 read FOwnerCellPosition write FOwnerCellPosition;
+    property SlaveCells : PCellPositionList read FSlaveCells write FSlaveCells;
+  end;
 
-    ReadInteger(FCellLeft);
-    ReadInteger(FCellWidth);
+{ 
 
-    ReadRect(FCellRect);
-    ReadRect(FTextRect);
-    // LCJ :DELETE on the road
-    ReadInteger(FCellHeight);
-    ReadInteger(FCellHeight);
-    ReadInteger(FRequiredCellHeight);
 
-    ReadBoolean(FLeftLine);
-    ReadInteger(FLeftLineWidth);
-
-    ReadBoolean(FTopLine);
-    ReadInteger(FTopLineWidth);
-
-    ReadBoolean(FRightLine);
-    ReadInteger(FRightLineWidth);
-
-    ReadBoolean(FBottomLine);
-    ReadInteger(FBottomLineWidth);
-
-    ReadCardinal(FDiagonal);
-
-    ReadCardinal(FTextColor);
-    ReadCardinal(FBackGroundColor);
-
-    ReadInteger(FHorzAlign);
-    ReadInteger(FVertAlign);
-
-    ReadString(FCellText);
-
-    If FileFlag <> $AA55 Then
-      ReadString(FCellDispformat);
-
+  
     If FileFlag = $AA57 Then
     Begin
       read(Fbmpyn, SizeOf(FbmpYn));
@@ -69,44 +135,16 @@ type
       ReadInteger(Count2);
       FSlaveCells.Add(TReportCell(TReportLine(Self.ReportControl.FLineList[Count1]).FCells[Count2]));
     End;}
-  PCell = class(TCollectionItem)
-  private
-    FName: string;
-    FI:Integer;
-  public
-  published
-    property id : string read FName write FName;
-    property i : integer read FI write FI;
-  end;
-  PLineRect = class (TPersistent)
-  private
-    FTop: integer;
-    FLeft: integer;
-    FRight: integer;
-    FBottom: integer;
-  published
-    property Left:integer read FLeft write FLeft;
-    property Right:integer read FRight write FRight;
-    property Top:integer read FTop write FTop;
-    property Bottom:integer read FBottom write FBottom;
-  end;
-  PCellList = class(TCollection)
-  private
-    FName: string;
-  public
-  published
-    property id : string read FName write FName;
-  end;
+
+
+ 
 //   NLine 的构造函数非常关键，必须覆盖 Create(Collection: TCollection);override，如果是Create;就无法被omnixml在构建此对象的时候调用 。
   PLine = class(TCollectionItem)
   private
     FName: string;
     FCellList: PCellList;
     FIndex: integer;
-    FLineRect3: integer;
-    FLineRect1: integer;
-    FLineRect4: integer;
-    FLineRect2: integer;
+
     FMinHeight: integer;
     FLineTop: integer;
     FDragHeight: integer;
@@ -198,7 +236,24 @@ begin
   inherited;
 end;
 
+{ PCell }
+
+constructor PCell.Create(Collection: TCollection);
+begin
+  inherited;
+  self.FSlaveCells := PCellPositionList.create(PCellPosition);
+  self.FOwnerCellPosition :=  PCellPosition1.Create();
+end;
+
+destructor PCell.destroy;
+begin
+  self.FOwnerCellPosition.free;
+  self.FSlaveCells.free ;
+  inherited;
+end;
+
 initialization
   RegisterClass(PLine);
   RegisterClass(PCell);
+  RegisterClass(PCellPosition)
 end.

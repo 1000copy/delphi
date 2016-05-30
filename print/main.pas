@@ -92,6 +92,7 @@ var
     p :PPage;
     l:PLine;
     c : PCell;
+    cpos :PCellPosition;
 begin
     //save
     p:=  PPage.Create;
@@ -118,6 +119,9 @@ begin
     c :=  PCell(l.CellList.add);
     c.id:='c1';
     c.i := 1 ;
+    cpos :=PCellPosition(c.SlaveCells.Add);
+    cpos.LineIndex := 1;
+    cpos.CellIndex :=  1;
     PLine(p.LineList.Add)._Index := 2;
     PLine(p.LineList.Add)._Index := 3;
     TOmniXMLWriter.SaveToFile(p,  '2.xml',pfAttributes,    ofIndent);
@@ -132,7 +136,7 @@ begin
     assert (l._Index = 1);
      assert (l.LineRect.left = 1);
     assert(PCell(l.CellList.Items[0] ).id = 'c1' )   ;
-
+      assert(PCell(l.CellList.Items[0] ).OwnerCellPosition.lineIndex = 0 )   ;
     p.free;
 end;
 
