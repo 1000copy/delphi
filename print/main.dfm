@@ -31,6 +31,7 @@ object fMain: TfMain
     Width = 75
     Height = 25
     Caption = 'btn4'
+    Default = True
     TabOrder = 1
     OnClick = btn4Click
   end

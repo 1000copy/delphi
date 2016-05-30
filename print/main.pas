@@ -113,7 +113,6 @@ begin
     l._Index := 1;
     l.MinHeight := 70 ;
     l.DragHeight := 70;
-    l.LineTop :=  5;
     l.LineRect.left := 1;
 
     c :=  PCell(l.CellList.add);
@@ -131,7 +130,9 @@ begin
     assert (p.LineList.count = 3);
     l :=  PLine(p.LineList.Items[0]);
     assert (l._Index = 1);
+     assert (l.LineRect.left = 1);
     assert(PCell(l.CellList.Items[0] ).id = 'c1' )   ;
+
     p.free;
 end;
 

@@ -5,6 +5,70 @@ interface
 
 uses classes;
 type
+{ ReadInteger(FLeftMargin);
+    ReadInteger(FCellIndex);
+
+    ReadInteger(FCellLeft);
+    ReadInteger(FCellWidth);
+
+    ReadRect(FCellRect);
+    ReadRect(FTextRect);
+    // LCJ :DELETE on the road
+    ReadInteger(FCellHeight);
+    ReadInteger(FCellHeight);
+    ReadInteger(FRequiredCellHeight);
+
+    ReadBoolean(FLeftLine);
+    ReadInteger(FLeftLineWidth);
+
+    ReadBoolean(FTopLine);
+    ReadInteger(FTopLineWidth);
+
+    ReadBoolean(FRightLine);
+    ReadInteger(FRightLineWidth);
+
+    ReadBoolean(FBottomLine);
+    ReadInteger(FBottomLineWidth);
+
+    ReadCardinal(FDiagonal);
+
+    ReadCardinal(FTextColor);
+    ReadCardinal(FBackGroundColor);
+
+    ReadInteger(FHorzAlign);
+    ReadInteger(FVertAlign);
+
+    ReadString(FCellText);
+
+    If FileFlag <> $AA55 Then
+      ReadString(FCellDispformat);
+
+    If FileFlag = $AA57 Then
+    Begin
+      read(Fbmpyn, SizeOf(FbmpYn));
+      If FbmpYn Then
+        FBmp.LoadFromStream(stream);
+    End;
+
+    ReadTLogFont(FLogFont);
+
+    ReadInteger(Count1);
+    ReadInteger(Count2);
+
+    If (Count1 < 0) Or (Count2 < 0) Then
+      FOwnerCell := Nil
+    Else
+      FOwnerCell :=
+        TReportCell(TReportLine(Self.ReportControl. FLineList[Count1]).FCells[Count2]);
+
+    ReadInteger(Count3);
+
+    For K := 0 To Count3 - 1 Do
+    Begin
+      ReadInteger(Count1);
+      ReadInteger(Count2);
+      FSlaveCells.Add(TReportCell(TReportLine(Self.ReportControl.FLineList[Count1]).FCells[Count2]));
+    End;}
   PCell = class(TCollectionItem)
   private
     FName: string;
@@ -56,8 +120,6 @@ type
     property _Index:integer read FIndex write FIndex ;
     property   MinHeight :integer read FMinHeight write FMinHeight;
     property   DragHeight :integer read FDragHeight write FDragHeight;
-    // todo : dup with linerect
-    property   LineTop :integer read FLineTop write FLineTop;
     // LineRect
     property LineRect : PLineRect read FLineRect write FLineRect;
   end;
