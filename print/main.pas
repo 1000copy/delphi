@@ -95,7 +95,7 @@ var
 begin
     //save
     p:=  PPage.Create;
-    p.id := 'str';
+    //p.id := 'str';
 
     p.LineList := PLineList.Create(PLine);
     p.ReportScale := 1;
@@ -110,25 +110,28 @@ begin
     p.TablePerPage := 1;
     
     l :=PLine(p.LineList.Add);
-    l.id := '1';
+    l._Index := 1;
+    l.MinHeight := 70 ;
+    l.DragHeight := 70;
+    l.LineTop :=  5;
+    l.LineRect.left := 1;
+
     c :=  PCell(l.CellList.add);
     c.id:='c1';
     c.i := 1 ;
-    NLine(p.LineList.Add).id := '2';
-    NLine(p.LineList.Add).id := '3';
+    PLine(p.LineList.Add)._Index := 2;
+    PLine(p.LineList.Add)._Index := 3;
     TOmniXMLWriter.SaveToFile(p,  '2.xml',pfAttributes,    ofIndent);
     p.free;
     // load
     p:=  PPage.Create;
 
     TOmniXMLReader.LoadFromFile(p, '2.xml');
-    assert (p.id = 'str');
-    l :=     PLine(p.LineList.Items[0]);
-    assert (l.id = '1');
-    assert(NCell(l.CellList.items[0]).id = 'c1');
-    assert(NCell(l.CellList.items[0]).i = 1);
-    assert (NLine(p.LineList.Items[1]).id = '2');
-    assert (NLine(p.LineList.Items[2]).id = '3');
+    //assert (p.id = 'str');
+    assert (p.LineList.count = 3);
+    l :=  PLine(p.LineList.Items[0]);
+    assert (l._Index = 1);
+    assert(PCell(l.CellList.Items[0] ).id = 'c1' )   ;
     p.free;
 end;
 

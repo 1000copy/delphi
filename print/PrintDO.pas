@@ -14,6 +14,18 @@ type
     property id : string read FName write FName;
     property i : integer read FI write FI;
   end;
+  PLineRect = class (TPersistent)
+  private
+    FTop: integer;
+    FLeft: integer;
+    FRight: integer;
+    FBottom: integer;
+  published
+    property Left:integer read FLeft write FLeft;
+    property Right:integer read FRight write FRight;
+    property Top:integer read FTop write FTop;
+    property Bottom:integer read FBottom write FBottom;
+  end;
   PCellList = class(TCollection)
   private
     FName: string;
@@ -26,11 +38,28 @@ type
   private
     FName: string;
     FCellList: PCellList;
+    FIndex: integer;
+    FLineRect3: integer;
+    FLineRect1: integer;
+    FLineRect4: integer;
+    FLineRect2: integer;
+    FMinHeight: integer;
+    FLineTop: integer;
+    FDragHeight: integer;
+    FLineRect: PLineRect;
+
   public
     constructor Create(Collection: TCollection);override;
+    destructor destroy;               override;
   published
-    property id : string read FName write FName;
     property CellList:PCellList read FCellList write FCellList;
+    property _Index:integer read FIndex write FIndex ;
+    property   MinHeight :integer read FMinHeight write FMinHeight;
+    property   DragHeight :integer read FDragHeight write FDragHeight;
+    // todo : dup with linerect
+    property   LineTop :integer read FLineTop write FLineTop;
+    // LineRect
+    property LineRect : PLineRect read FLineRect write FLineRect;
   end;
   PLineList = class(TCollection)
   private
@@ -57,9 +86,9 @@ type
 
   public
     constructor Create;
-
+    destructor destroy;               override;
   published
-    property id : string read FName write FName;
+    //property id : string read FName write FName;
     property ReportScale : Integer read FReportScale write FReportScale;
     property PageWidth:  Integer read FPageWidth write FPageWidth ;
     property PageHeight:  Integer read FPageHeight write FPageHeight ;
@@ -73,22 +102,6 @@ type
     property LineList: PLineList read FLineList write FLineList;
   end;
 
-{
-      WriteInteger(FReportScale);
-      WriteInteger(FPageWidth);
-      WriteInteger(FPageHeight);
-      WriteInteger(FLeftMargin);
-      WriteInteger(FTopMargin);
-      WriteInteger(FRightMargin);
-      WriteInteger(FBottomMargin);
-      WriteInteger(FLeftMargin1);
-      WriteInteger(FTopMargin1);
-      WriteInteger(FRightMargin1);
-      WriteInteger(FBottomMargin1);
-      WriteBoolean(FNewTable);
-      WriteInteger(FDataLine);
-      WriteInteger(FTablePerPage);
-      WriteInteger(FLineList.Count);}
 implementation
 
 { NPage }
@@ -107,6 +120,20 @@ constructor PLine.Create(Collection: TCollection);
 begin
   inherited;
   FCellList := PCellList.Create(PCell);
+  FLineRect := PLineRect.create();
+end;
+
+destructor PLine.destroy;
+begin
+  FCellList.Free;
+  FLineRect.Free;
+  inherited ;
+end;
+
+destructor PPage.destroy;
+begin
+  FLineList.Free ;
+  inherited;
 end;
 
 initialization
