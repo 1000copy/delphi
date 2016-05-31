@@ -3,8 +3,13 @@ unit PrintDO;
 
 interface
 
-uses classes;
+uses classes,SimpleStream,windows,Graphics;
 type
+  PLineRect = class ;
+  SS = class(TSimpleFileStream)
+  public
+    procedure ReadRect1(var a:PLineRect);
+  end;
   PCellList = class(TCollection)
   private
     FName: string;
@@ -44,6 +49,9 @@ type
   end;
   PCell = class(TCollectionItem)
   private
+    FOwnerCell: PCell;
+    procedure SetOwnerCell(const Value: PCell);
+  protected
     FName: string;
     FI:Integer;
     FBottomLine: boolean;
@@ -51,7 +59,7 @@ type
     FTopLine: boolean;
     FRightLine: boolean;
     Fbmpyn: boolean;
-    FCellDispformat: Cardinal;
+    FCellDispformat: String;
     FDiagonal: Cardinal;
     FTextColor: Cardinal;
     FRightLineWidth: integer;
@@ -72,7 +80,13 @@ type
     FBackGroundColor: Cardinal;
     FOwnerCellPosition: PCellPosition1;
     FSlaveCells: PCellPositionList;
+    // todo
+    FBmp: TBitmap;
+    // font
+    FLogFont: TLOGFONT;
+
   public
+    procedure Load(stream: SS; FileFlag: Word);
     constructor Create(Collection: TCollection);override;
     destructor destroy;override;
   published
@@ -99,45 +113,13 @@ type
     property HorzAlign : integer read FHorzAlign write FHorzAlign;
     property VertAlign : integer read FVertAlign write FVertAlign;
     property CellText : String read FCellText write FCellText;
-    property CellDispformat : Cardinal read FCellDispformat write FCellDispformat;
+    property CellDispformat : String read FCellDispformat write FCellDispformat;
     property bmpyn : boolean read Fbmpyn write Fbmpyn;
     property OwnerCellPosition : PCellPosition1 read FOwnerCellPosition write FOwnerCellPosition;
     property SlaveCells : PCellPositionList read FSlaveCells write FSlaveCells;
+    Property OwnerCell: PCell Read FOwnerCell Write SetOwnerCell;
   end;
 
-{ 
-
-
-  
-    If FileFlag = $AA57 Then
-    Begin
-      read(Fbmpyn, SizeOf(FbmpYn));
-      If FbmpYn Then
-        FBmp.LoadFromStream(stream);
-    End;
-
-    ReadTLogFont(FLogFont);
-
-    ReadInteger(Count1);
-    ReadInteger(Count2);
-
-    If (Count1 < 0) Or (Count2 < 0) Then
-      FOwnerCell := Nil
-    Else
-      FOwnerCell :=
-        TReportCell(TReportLine(Self.ReportControl. FLineList[Count1]).FCells[Count2]);
-
-    ReadInteger(Count3);
-
-    For K := 0 To Count3 - 1 Do
-    Begin
-      ReadInteger(Count1);
-      ReadInteger(Count2);
-      FSlaveCells.Add(TReportCell(TReportLine(Self.ReportControl.FLineList[Count1]).FCells[Count2]));
-    End;}
-
-
- 
 //   NLine 的构造函数非常关键，必须覆盖 Create(Collection: TCollection);override，如果是Create;就无法被omnixml在构建此对象的时候调用 。
   PLine = class(TCollectionItem)
   private
@@ -153,6 +135,9 @@ type
   public
     constructor Create(Collection: TCollection);override;
     destructor destroy;               override;
+    procedure CreateLine(LineLeft, CellNumber, PageWidth: Integer);
+    procedure Load(s: SS);
+
   published
     property CellList:PCellList read FCellList write FCellList;
     property _Index:integer read FIndex write FIndex ;
@@ -170,7 +155,7 @@ type
   end;
 
   PPage = class(TPersistent)
-  private
+  protected
     FName: string;
     FLineList: PLineList;
     FReportScale: Integer;
@@ -183,7 +168,11 @@ type
     FNewTable: Boolean;
     FDataLine: integer;
     FTablePerPage: integer;
-
+    // todo
+      FLeftMargin1: Integer;
+    FTopMargin1: Integer;
+    FRightMargin1: Integer;
+    FBottomMargin1: Integer;
   public
     constructor Create;
     destructor destroy;               override;
@@ -243,17 +232,143 @@ begin
   inherited;
   self.FSlaveCells := PCellPositionList.create(PCellPosition);
   self.FOwnerCellPosition :=  PCellPosition1.Create();
+  FBmp:= TBitmap.Create;
 end;
 
 destructor PCell.destroy;
 begin
   self.FOwnerCellPosition.free;
   self.FSlaveCells.free ;
+  FBmp.free;
   inherited;
+end;
+Procedure PLine.CreateLine(LineLeft, CellNumber, PageWidth: Integer);
+Var
+  I: Integer;
+  NewCell: PCell;
+  CellWidth: Integer;
+Begin
+  CellWidth := trunc(PageWidth / CellNumber + 0.5);
+  For I := 0 To CellNumber - 1 Do
+  Begin
+    NewCell := PCell(self.cellList.add);
+//    NewCell.OwnerLine := Self;
+    NewCell.CellIndex := I;
+    NewCell.CellLeft := I * CellWidth + LineLeft;
+    NewCell.CellWidth := CellWidth;
+  End;
+End;
+procedure PLine.Load(s: SS);
+
+begin
+  s.ReadInteger(FIndex);
+  s.ReadInteger(FMinHeight);
+  s.ReadInteger(FDragHeight);
+  s.ReadInteger(FLineTop);
+  s.ReadRect1(FLineRect);
+
+end;
+
+procedure PCell.Load(stream: SS;FileFlag:Word);
+Var
+  TargetFile: TSimpleFileStream;
+  Count1, Count2, Count3: Integer;
+  ThisLine: PLine;
+  ThisCell: PCell;
+  I, J, K: Integer;
+  TempPChar: Array[0..3000] Of Char;
+  bHasDataSet: Boolean;
+  p : PCellPosition;
+begin
+  with stream do
+  begin
+    ReadInteger(FLeftMargin);
+    ReadInteger(FCellIndex);
+
+    ReadInteger(FCellLeft);
+    ReadInteger(FCellWidth);
+
+    ReadRect1(FCellRect);
+    ReadRect1(FTextRect);
+    // LCJ :DELETE on the road
+    ReadInteger(FCellHeight);
+    ReadInteger(FCellHeight);
+    ReadInteger(FRequiredCellHeight);
+
+    ReadBoolean(FLeftLine);
+    ReadInteger(FLeftLineWidth);
+
+    ReadBoolean(FTopLine);
+    ReadInteger(FTopLineWidth);
+
+    ReadBoolean(FRightLine);
+    ReadInteger(FRightLineWidth);
+
+    ReadBoolean(FBottomLine);
+    ReadInteger(FBottomLineWidth);
+
+    ReadCardinal(FDiagonal);
+
+    ReadCardinal(FTextColor);
+    ReadCardinal(FBackGroundColor);
+
+    ReadInteger(FHorzAlign);
+    ReadInteger(FVertAlign);
+
+    ReadString(FCellText);
+
+    If FileFlag <> $AA55 Then
+      ReadString(FCellDispformat);
+
+    If FileFlag = $AA57 Then
+    Begin
+      read(Fbmpyn, SizeOf(FbmpYn));
+      If FbmpYn Then
+        FBmp.LoadFromStream(stream);
+    End;
+
+    ReadTLogFont(FLogFont);
+
+    ReadInteger(Count1);
+    ReadInteger(Count2);
+    self.OwnerCellPosition.LineIndex := count1;
+    Self.OwnerCellPosition.CellIndex := Count2 ;
+
+//    If (Count1 < 0) Or (Count2 < 0) Then
+//      FOwnerCell := Nil
+//    Else
+//      FOwnerCell :=
+//        PCell(PLine(Page.LineList[Count1]).[Count2]);
+
+    ReadInteger(Count3);
+
+    For K := 0 To Count3 - 1 Do
+    Begin
+      ReadInteger(Count1);
+      ReadInteger(Count2);
+      p := PCellPosition(self.SlaveCells.Add) ;
+      p.LineIndex := Count1 ;
+      p.CellIndex := Count2;
+    End;
+   end;
+end;
+procedure PCell.SetOwnerCell(const Value: PCell);
+begin
+  //FOwnerCell := Value;
+//  raise Exception.create('Boom');
+end;
+
+{ SS }
+
+procedure SS.ReadRect1(var a: PLineRect);
+var r:TRect ;
+begin
+    ReadRect(r);
+    
 end;
 
 initialization
-  RegisterClass(PLine);
-  RegisterClass(PCell);
-  RegisterClass(PCellPosition)
+  classes.RegisterClass(PLine);
+  classes.RegisterClass(PCell);
+  classes.RegisterClass(PCellPosition)
 end.

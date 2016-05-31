@@ -35,4 +35,13 @@ object fMain: TfMain
     TabOrder = 1
     OnClick = btn4Click
   end
+  object btn1: TButton
+    Left = 48
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'btn1'
+    TabOrder = 2
+    OnClick = btn1Click
+  end
 end

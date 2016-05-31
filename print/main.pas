@@ -8,7 +8,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls,
   OmniXML, OmniXML_Types,
-  OmniXMLPersistent;
+  OmniXMLPersistent,printGear;
 
 
 
@@ -19,8 +19,10 @@ type
   TfMain = class(TForm)
     btn3: TButton;
     btn4: TButton;
+    btn1: TButton;
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
   private
     DocPath: string;
   public
@@ -71,22 +73,7 @@ begin
     assert (NLine(p.LineList.Items[2]).id = '3');
     p.free;
 end;
-        {
-      WriteInteger(FReportScale);
-      WriteInteger(FPageWidth);
-      WriteInteger(FPageHeight);
-      WriteInteger(FLeftMargin);
-      WriteInteger(FTopMargin);
-      WriteInteger(FRightMargin);
-      WriteInteger(FBottomMargin);
-      WriteInteger(FLeftMargin1);
-      WriteInteger(FTopMargin1);
-      WriteInteger(FRightMargin1);
-      WriteInteger(FBottomMargin1);
-      WriteBoolean(FNewTable);
-      WriteInteger(FDataLine);
-      WriteInteger(FTablePerPage);
-      WriteInteger(FLineList.Count);}
+
 procedure TfMain.btn4Click(Sender: TObject);
 var
     p :PPage;
@@ -142,6 +129,15 @@ end;
 
 
 
+
+procedure TfMain.btn1Click(Sender: TObject);
+var g : GearPage ;
+begin
+  g := GearPage.create;
+  g.LoadFrom('lcj.ept');
+  TOmniXMLWriter.SaveToFile(g,  '3.xml',pfAttributes,    ofIndent);
+  g.Free;
+end;
 
 end.
 

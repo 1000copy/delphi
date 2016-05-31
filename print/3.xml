@@ -1,0 +1,108 @@
+<data PropFormat="attr">
+  <GearPage ReportScale="100" PageWidth="1123" PageHeight="794" LeftMargin="77" TopMargin="77" RightMargin="38" BottomMargin="58" NewTable="1" DataLine="2000" TablePerPage="1">
+    <LineList>
+      <o _Index="0" MinHeight="33" DragHeight="80">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="945" CellHeight="33" RequiredCellHeight="0" LeftLine="0" LeftLineWidth="1" TopLine="0" TopLineWidth="1" RightLine="0" RightLineWidth="1" BottomLine="0" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="1" VertAlign="1" CellText="支票112" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+      <o _Index="1" MinHeight="20" DragHeight="40">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="No" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="1" CellLeft="212" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Cassname" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="2" CellLeft="347" CellWidth="130" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Lb" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="3" CellLeft="477" CellWidth="140" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Bz" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="4" CellLeft="617" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Hh" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="5" CellLeft="752" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Sx" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="6" CellLeft="887" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="255" HorzAlign="1" VertAlign="1" CellText="Bm" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+      <o _Index="2" MinHeight="20" DragHeight="0">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="3" VertAlign="1" CellText="#T1.No" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="1" CellLeft="212" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="3" VertAlign="1" CellText="#T1.Cassname" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="2" CellLeft="347" CellWidth="130" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="2" VertAlign="1" CellText="#T1.Lb" CellDispformat="0,.00" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="3" CellLeft="477" CellWidth="140" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="2" VertAlign="1" CellText="#T1.Bz" CellDispformat="0,.00" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="4" CellLeft="617" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="2" VertAlign="1" CellText="#T1.Hh" CellDispformat="0,.00" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="5" CellLeft="752" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="3" VertAlign="1" CellText="#T1.Sx" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="6" CellLeft="887" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="3" VertAlign="1" CellText="#T1.Bm" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+      <o _Index="3" MinHeight="20" DragHeight="0">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" CellText="支票" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="1" CellLeft="212" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="2" CellLeft="347" CellWidth="130" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="3" CellLeft="477" CellWidth="140" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="2" VertAlign="1" CellText="`SumAll(4)" CellDispformat="0,.00" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="4" CellLeft="617" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="5" CellLeft="752" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+          <o i="0" LeftMargin="5" CellIndex="6" CellLeft="887" CellWidth="135" CellHeight="20" RequiredCellHeight="0" LeftLine="1" LeftLineWidth="1" TopLine="1" TopLineWidth="1" RightLine="1" RightLineWidth="1" BottomLine="1" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+      <o _Index="4" MinHeight="20" DragHeight="0">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="945" CellHeight="20" RequiredCellHeight="0" LeftLine="0" LeftLineWidth="1" TopLine="0" TopLineWidth="1" RightLine="0" RightLineWidth="1" BottomLine="0" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="1" VertAlign="1" CellText="   11`PageNum/" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+      <o _Index="5" MinHeight="20" DragHeight="250">
+        <CellList>
+          <o i="0" LeftMargin="5" CellIndex="0" CellLeft="77" CellWidth="945" CellHeight="20" RequiredCellHeight="0" LeftLine="0" LeftLineWidth="1" TopLine="0" TopLineWidth="1" RightLine="0" RightLineWidth="1" BottomLine="0" BottomLineWidth="1" Diagonal="0" TextColor="0" HorzAlign="0" VertAlign="1" CellText="@T2.Loel" bmpyn="0">
+            <OwnerCellPosition LineIndex="-1" CellIndex="-1" />
+          </o>
+        </CellList>
+        <LineRect Left="0" Right="0" Top="0" Bottom="0" />
+      </o>
+    </LineList>
+  </GearPage>
+</data>
