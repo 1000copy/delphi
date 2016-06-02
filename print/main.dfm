@@ -17,8 +17,8 @@ object fMain: TfMain
   PixelsPerInch = 96
   TextHeight = 13
   object btn3: TButton
-    Left = 40
-    Top = 88
+    Left = 32
+    Top = 16
     Width = 75
     Height = 25
     Caption = 'btn3'
@@ -26,8 +26,8 @@ object fMain: TfMain
     OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 160
-    Top = 88
+    Left = 112
+    Top = 16
     Width = 75
     Height = 25
     Caption = 'btn4'
@@ -36,8 +36,8 @@ object fMain: TfMain
     OnClick = btn4Click
   end
   object btn1: TButton
-    Left = 48
-    Top = 136
+    Left = 200
+    Top = 16
     Width = 75
     Height = 25
     Caption = 'btn1'
