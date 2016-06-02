@@ -3,11 +3,10 @@ unit printGear;
 interface
 Uses
   PrintDO,
-  Windows, Messages, SysUtils,Math,cc,
-  {$WARNINGS OFF}FileCtrl,{$WARNINGS ON}
+  Windows, Messages, SysUtils,Math,
    Classes, Graphics, Controls,
   Forms, Dialogs, Printers, Menus, Db,
-  DesignEditors, ExtCtrls,SimpleStream;
+   ExtCtrls,SimpleStream;
 type
 
   GearPage = class(PPage)
@@ -80,31 +79,31 @@ Begin
       ReadInteger(FTablePerPage);
       // 多少行
       ReadInteger(Count1);
-      For I := 0 To Count1 - 1 Do
-      Begin
-        ThisLine :=PLine(self.LineList.add );
-//  		  if (self is TReportControl) then
-//        	ThisLine.FReportControl := Self;
-        ReadInteger(Count2);
-        ThisLine.CreateLine(0, Count2, FRightMargin - FLeftMargin);
-      End;
-      // 每行的属性
-      For I := 0 To FLineList.Count - 1 Do
-      Begin
-        ThisLine := PLine(FLineList.Items[I]);
-        ThisLine.Load(TargetFile);
-        // 每个CELL的属性
-        For J := 0 To ThisLine.CellList.Count - 1 Do
-        Begin
-          ThisCell := PCell(ThisLine.CellList.Items[J]);
-          ThisCell.Load(TargetFile,FileFlag);
-        End;
-      End;
-      ReadIntegerSkip();//(FprPageNo);
-      ReadIntegerSkip();//(FprPageXy);
-      ReadIntegerSkip();//(fpaperLength);
-      ReadIntegerSkip();//(fpaperWidth);
-      ReadIntegerSkip();//FHootNo
+//       For I := 0 To Count1 - 1 Do
+//       Begin
+//         ThisLine :=PLine(self.LineList.add );
+// //  		  if (self is TReportControl) then
+// //        	ThisLine.FReportControl := Self;
+//         ReadInteger(Count2);
+//         ThisLine.CreateLine(0, Count2, FRightMargin - FLeftMargin);
+//       End;
+//       // 每行的属性
+//       For I := 0 To FLineList.Count - 1 Do
+//       Begin
+//         ThisLine := PLine(FLineList.Items[I]);
+//         ThisLine.Load(TargetFile);
+//         // 每个CELL的属性
+//         For J := 0 To ThisLine.CellList.Count - 1 Do
+//         Begin
+//           ThisCell := PCell(ThisLine.CellList.Items[J]);
+//           ThisCell.Load(TargetFile,FileFlag);
+//         End;
+//       End;
+//       ReadIntegerSkip();//(FprPageNo);
+//       ReadIntegerSkip();//(FprPageXy);
+//       ReadIntegerSkip();//(fpaperLength);
+//       ReadIntegerSkip();//(fpaperWidth);
+//       ReadIntegerSkip();//FHootNo
     End;
   Finally
     TargetFile.Free;

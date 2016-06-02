@@ -41,6 +41,9 @@ type
     FLeft: integer;
     FRight: integer;
     FBottom: integer;
+  public
+  function ToRect: TRect;
+
   published
     property Left:integer read FLeft write FLeft;
     property Right:integer read FRight write FRight;
@@ -89,6 +92,7 @@ type
     procedure Load(stream: SS; FileFlag: Word);
     constructor Create(Collection: TCollection);override;
     destructor destroy;override;
+    function IsSlave:Boolean ;
   published
     property id : string read FName write FName;
     property i : integer read FI write FI;
@@ -131,12 +135,12 @@ type
     FLineTop: integer;
     FDragHeight: integer;
     FLineRect: PLineRect;
+    procedure Load(s: SS);
 
   public
     constructor Create(Collection: TCollection);override;
     destructor destroy;               override;
     procedure CreateLine(LineLeft, CellNumber, PageWidth: Integer);
-    procedure Load(s: SS);
 
   published
     property CellList:PCellList read FCellList write FCellList;
@@ -155,6 +159,9 @@ type
   end;
 
   PPage = class(TPersistent)
+  private
+    FBackGroundColor: COLORREF;
+    procedure SetBackGroundColor(const Value: COLORREF);
   protected
     FName: string;
     FLineList: PLineList;
@@ -189,6 +196,7 @@ type
     property DataLine: integer read FDataLine write FDataLine;
     property TablePerPage: integer read FTablePerPage write FTablePerPage;
     property LineList: PLineList read FLineList write FLineList;
+    Property BkColor: COLORREF Read FBackGroundColor Write SetBackGroundColor Default clWhite;
   end;
 
 implementation
@@ -267,6 +275,11 @@ begin
   s.ReadInteger(FLineTop);
   s.ReadRect1(FLineRect);
 
+end;
+
+function PCell.IsSlave: Boolean;
+begin
+  result := self.OwnerCell <> nil;
 end;
 
 procedure PCell.Load(stream: SS;FileFlag:Word);
@@ -365,6 +378,23 @@ var r:TRect ;
 begin
     ReadRect(r);
     
+end;
+
+
+
+{ PLineRect }
+
+function PLineRect.ToRect: TRect;
+begin
+   result.Left := self.Left;
+   result.Right := self.Right;
+   result.Bottom := self.Bottom;
+   result.Top := self.Top;
+end;
+
+procedure PPage.SetBackGroundColor(const Value: COLORREF);
+begin
+  FBackGroundColor := Value;
 end;
 
 initialization

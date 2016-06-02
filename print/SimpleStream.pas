@@ -3,11 +3,11 @@ unit SimpleStream;
 interface
 Uses
 
-  Windows, Messages, SysUtils,Math,cc,
+  Windows, Messages, SysUtils,Math,
   {$WARNINGS OFF}FileCtrl,{$WARNINGS ON}
    Classes, Graphics, Controls,
   Forms, Dialogs, Printers, Menus, Db,
-  DesignEditors, ExtCtrls,osservice;
+   ExtCtrls;
 type
  TSimpleFileStream = class(TFileStream)
    public
