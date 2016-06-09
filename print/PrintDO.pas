@@ -5,6 +5,7 @@ interface
 
 uses classes,SimpleStream,windows,Graphics;
 type
+  PLine = class ;
   PLineRect = class ;
   SS = class(TSimpleFileStream)
   public
@@ -53,6 +54,7 @@ type
   PCell = class(TCollectionItem)
   private
     FOwnerCell: PCell;
+    FOwnerLine: PLine;
     procedure SetOwnerCell(const Value: PCell);
   protected
     FName: string;
@@ -89,6 +91,7 @@ type
     FLogFont: TLOGFONT;
 
   public
+    property OwnerLine : PLine read FOwnerLine write FOwnerLine;
     procedure Load(stream: SS; FileFlag: Word);
     constructor Create(Collection: TCollection);override;
     destructor destroy;override;
@@ -161,6 +164,7 @@ type
   PPage = class(TPersistent)
   private
     FBackGroundColor: COLORREF;
+    FPreviewStatus: Boolean;
     procedure SetBackGroundColor(const Value: COLORREF);
   protected
     FName: string;
@@ -181,11 +185,12 @@ type
     FRightMargin1: Integer;
     FBottomMargin1: Integer;
   public
+    property PreviewStatus : Boolean read FPreviewStatus write FPreviewStatus;
     constructor Create;
     destructor destroy;               override;
   published
     //property id : string read FName write FName;
-    property ReportScale : Integer read FReportScale write FReportScale;
+    property ReportScale : Integer read FReportScale write FReportScale default 100;
     property PageWidth:  Integer read FPageWidth write FPageWidth ;
     property PageHeight:  Integer read FPageHeight write FPageHeight ;
     property LeftMargin:  Integer read FLeftMargin write FLeftMargin ;

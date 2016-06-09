@@ -8,7 +8,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls,
   OmniXML, OmniXML_Types,
-  OmniXMLPersistent,printGear;
+  OmniXMLPersistent,printGear,uReport;
 
 
 
@@ -20,11 +20,14 @@ type
     btn3: TButton;
     btn4: TButton;
     btn1: TButton;
+    btn2: TButton;
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
   private
     DocPath: string;
+
   public
     { Public declarations }
   end;
@@ -39,7 +42,7 @@ var
 implementation
 
 {$R *.DFM}
-uses pm,PrintDO;
+uses pm,PrintDO, uForm1;
 procedure TfMain.btn3Click(Sender: TObject);
 var
     p :NPage;
@@ -137,6 +140,11 @@ begin
   g.LoadFrom('lcj.ept');
   TOmniXMLWriter.SaveToFile(g,  '3.xml',pfAttributes,    ofIndent);
   g.Free;
+end;
+
+procedure TfMain.btn2Click(Sender: TObject);
+begin
+  form1.show;
 end;
 
 end.

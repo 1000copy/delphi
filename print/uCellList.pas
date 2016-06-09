@@ -9,6 +9,7 @@ type
     FOs : WindowsOS;
   public
     constructor Create(page:PPage);
+    destructor destroy;override ;
     procedure MakeInteractWith(R: TRect);
   end;
 implementation
@@ -17,7 +18,15 @@ implementation
 
 constructor TCellList.Create(page: PPage);
 begin
+   self.FPage := page ;
+   FOs := WindowsOS.Create;
+end;
 
+destructor TCellList.destroy;
+begin
+  FPage.Free;
+  FOs.Free ;
+  inherited;
 end;
 
 procedure TCellList.MakeInteractWith(R: TRect);

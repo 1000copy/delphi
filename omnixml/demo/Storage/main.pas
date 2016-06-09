@@ -165,7 +165,7 @@ const
     ( CodePage: 1250; SampleString: CSloveneString; SampleCharIndex: 21 ),
     ( CodePage: 1200; SampleString: CUnicodeString; SampleCharIndex: 1 )
   );
-function SampleChar(et:TExampleText): TExampleTextCharType;
+//function SampleChar(et:TExampleText): TExampleTextCharType;
 { TExampleText }
 
 function SampleChar(et:TExampleText): TExampleTextCharType;

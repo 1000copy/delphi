@@ -52,11 +52,11 @@ implementation
 { PReport }
 
 constructor PReport.Create(AOwner: TComponent);
-var page : PPage ;
+
 begin
   inherited;
   page := PPage.Create;
-  OmniXMLPersistent.TOmniXMLReader.LoadFromFile(page,  '3.xml');
+  OmniXMLPersistent.TOmniXMLReader.LoadFromFile(page,  '2.xml');
   os := WindowsOS.create;
 end;
 
@@ -311,11 +311,11 @@ begin
   if (not cell.LeftLine) and (not bPrint) and (cell.CellIndex = 0) then
     DrawLeft(hPaintDc,cc.Grey,cell);
   if (not cell.TopLine) and (not bPrint) and (cell.OwnerLine.Index = 0) then
-    DrawTop(hPaintDc,cc.Grey);
-  if (not FRightLine) and (not bPrint)  then
-    DrawRight(hPaintDc,cc.Grey);
-  if (not FBottomLine )and (not bPrint)  then
-    DrawBottom(hPaintDc,cc.Grey);
+    DrawTop(hPaintDc,cc.Grey,cell);
+  if (not cell.RightLine) and (not bPrint)  then
+    DrawRight(hPaintDc,cc.Grey,cell);
+  if (not cell.BottomLine )and (not bPrint)  then
+    DrawBottom(hPaintDc,cc.Grey,cell);
 end;
 procedure PReport.DoPaint(hPaintDC: HDC; Handle: HWND; ps: TPaintStruct);
 Var
@@ -343,19 +343,19 @@ begin
         //Cells[i].DrawImage ;
         cell := PCell(Cells[i]);
         If not cell.IsSlave Then
-          PaintCell(hPaintDC,cell,FPreviewStatus);
+          PaintCell(hPaintDC,cell,page.PreviewStatus);
     end;
   finally
     Cells.Free;
     c.Free;
   end;
-  if not FPreviewStatus then
-    For I := 0 To FSelectCells.Count - 1 Do
-    Begin
-      Rect := os.IntersectRect( ps.rcPaint,FSelectCells[I].CellRect);
-      if not os.IsRectEmpty(Rect) then
-        InvertRect(hPaintDC, Rect);
-    End;     
+//  if not page.PreviewStatus then
+//    For I := 0 To page.SelectCells.Count - 1 Do
+//    Begin
+//      Rect := os.IntersectRect( ps.rcPaint,FSelectCells[I].CellRect);
+//      if not os.IsRectEmpty(Rect) then
+//        InvertRect(hPaintDC, Rect);
+//    End;
 end;
 
 procedure PReport.WMPaint(var Message: TMessage);

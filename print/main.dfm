@@ -1,10 +1,9 @@
 object fMain: TfMain
-  Left = 268
-  Top = 192
-  BorderStyle = bsDialog
-  Caption = 'OmniXML demo: Storage'
-  ClientHeight = 355
-  ClientWidth = 377
+  Left = 297
+  Top = 137
+  Width = 644
+  Height = 183
+  Caption = 'p'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -43,5 +42,14 @@ object fMain: TfMain
     Caption = 'btn1'
     TabOrder = 2
     OnClick = btn1Click
+  end
+  object btn2: TButton
+    Left = 296
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'btn2'
+    TabOrder = 3
+    OnClick = btn2Click
   end
 end
